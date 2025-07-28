@@ -44,6 +44,8 @@ function createSkillsSearchUI() {
                         <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">Prompt Engineering</button>
                         <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">Kubernetes</button>
                         <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">Leadership</button>
+                        <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">SOLID Principles</button>
+                        <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">Design Patterns</button>
                     </div>
                 </div>
             </div>
@@ -278,6 +280,22 @@ function initSkillsSearch() {
             description: "Expertise in agile development practices and methodologies.",
             projects: [],
             location: "#experience"
+        },
+        {
+            name: "SOLID Principles",
+            category: "Software Engineering",
+            proficiency: 95,
+            description: "Strong understanding and application of SOLID principles (Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, Dependency Inversion) in test framework architecture.",
+            projects: ["Test Automation Framework", "Universal Test Case Generator"],
+            location: "#skills"
+        },
+        {
+            name: "Design Patterns",
+            category: "Software Engineering",
+            proficiency: 90,
+            description: "Proficient in implementing design patterns such as Factory, Singleton, Builder, Strategy, and Observer patterns for creating maintainable and scalable test frameworks.",
+            projects: ["Test Automation Framework", "Universal Test Case Generator"],
+            location: "#skills"
         },
         {
             name: "JUnit",
