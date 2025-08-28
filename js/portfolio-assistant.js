@@ -278,9 +278,16 @@ function initChatbot() {
             ],
             ai: [
                 { name: "GenAI", proficiency: 90 },
-                { name: "Streamlit", proficiency: 85 },
                 { name: "Prompt Engineering", proficiency: 90 },
-                { name: "LLM Integration", proficiency: 85 }
+                { name: "LLM Integration", proficiency: 85 },
+                { name: "RAG (Retrieval Augmented Generation)", proficiency: 85 },
+                { name: "LangChain", proficiency: 80 },
+                { name: "Vector Databases", proficiency: 80 },
+                { name: "Langfuse", proficiency: 85 },
+                { name: "MCP Server", proficiency: 85 },
+                { name: "Streamlit", proficiency: 85 },
+                { name: "Semantic Search", proficiency: 80 },
+                { name: "Fine-tuning LLMs", proficiency: 75 }
             ],
             soft: [
                 { name: "Leadership", proficiency: 90 },
@@ -309,9 +316,9 @@ function initChatbot() {
             },
             {
                 name: "AI-Powered Prebid Chatbot",
-                description: "Intelligent chatbot for Slack that handles operations related to Prebid and OpenWrap.",
-                technologies: ["Python", "JavaScript", "HTML/CSS", "OpenAI API", "Claude API", "Slack API"],
-                features: ["Monetization gap analysis", "Page setup guidance", "Bid enrichment analysis", "Natural language SQL"]
+                description: "Intelligent chatbot for Slack that handles operations related to Prebid and OpenWrap, leveraging advanced AI technologies for enhanced performance and observability.",
+                technologies: ["Python", "JavaScript", "OpenAI API", "Claude API", "Slack API", "LangChain", "RAG", "Vector Databases", "Langfuse", "MCP Server"],
+                features: ["Monetization gap analysis", "Page setup guidance", "Bid enrichment analysis", "Natural language SQL", "Semantic search across documentation", "Real-time observability with Langfuse", "Performance monitoring via MCP server", "Dynamic context retrieval with RAG"]
             },
             {
                 name: "Intelligent Climate Dashboard",
@@ -339,14 +346,18 @@ function initChatbot() {
                 period: "2019 - Present",
                 responsibilities: [
                     "Leading automation efforts for web and API testing",
-                    "Developing AI-powered tools for testing and operations",
+                    "Architecting and developing AI-powered tools using RAG, LangChain, and LLMs",
+                    "Implementing observability solutions with Langfuse and MCP server",
                     "Contributing to Prebid.js open-source project",
-                    "Mentoring junior team members",
-                    "Implementing CI/CD pipelines"
+                    "Mentoring junior team members on AI and automation technologies",
+                    "Implementing CI/CD pipelines with integrated AI quality checks"
                 ],
                 achievements: [
-                    "Developed an AI-powered chatbot that improved team efficiency by 30%",
-                    "Created a universal test case generator using AI, reducing test creation time by 60%",
+                    "Developed an AI-powered chatbot with RAG architecture that improved team efficiency by 30%",
+                    "Created a universal test case generator using AI and vector embeddings, reducing test creation time by 60%",
+                    "Implemented Langfuse observability for AI applications, improving prompt performance by 25%",
+                    "Built an MCP server monitoring solution for real-time AI application performance tracking",
+                    "Designed and implemented a semantic search system across technical documentation",
                     "Contributed multiple features to Prebid.js, enhancing header bidding functionality"
                 ]
             },
