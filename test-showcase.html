@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Showcase Test</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="container mx-auto">
+        <h1 class="text-3xl font-bold mb-6">AI Showcase Test</h1>
+        
+        <!-- AI Showcase Section -->
+        <section id="ai-showcase" class="py-10 bg-gradient-to-r from-blue-900 to-indigo-900 text-white rounded-lg">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-white mb-2">AI Innovation Showcase</h2>
+                    <p class="text-lg text-gray-300">Testing the showcase loading</p>
+                </div>
+                
+                <div id="ai-showcase-container" class="relative">
+                    <!-- AI Showcase content will be dynamically loaded here by ai-showcase.js -->
+                    <div class="text-center py-8">
+                        <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white mb-4"></div>
+                        <p class="text-lg">Loading AI showcase...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="mt-8 p-4 bg-white rounded shadow">
+            <h2 class="text-xl font-bold mb-2">Test Results</h2>
+            <div id="test-results" class="font-mono text-sm">
+                Waiting for test results...
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    
+    <!-- Test script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const results = document.getElementById('test-results');
+            
+            // Log test steps
+            function logStep(message) {
+                const step = document.createElement('div');
+                step.className = 'py-1';
+                step.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+                results.appendChild(step);
+            }
+            
+            logStep('Test started');
+            
+            // Monitor for showcase loading
+            const showcaseMonitor = setInterval(() => {
+                const container = document.getElementById('ai-showcase-container');
+                if (container) {
+                    if (container.querySelector('.bg-white')) {
+                        logStep('SUCCESS: AI Showcase content loaded!');
+                        clearInterval(showcaseMonitor);
+                    } else if (container.querySelector('.animate-spin')) {
+                        logStep('Loading indicator still present...');
+                    }
+                }
+            }, 1000);
+            
+            // Check for charts after a delay
+            setTimeout(() => {
+                const charts = document.querySelectorAll('canvas');
+                logStep(`Found ${charts.length} charts on the page`);
+                
+                if (charts.length > 0) {
+                    logStep('SUCCESS: Charts were created!');
+                } else {
+                    logStep('WARNING: No charts were found');
+                }
+            }, 5000);
+        });
+    </script>
+    
+    <!-- AI Showcase scripts -->
+    <script src="js/ai-showcase.js"></script>
+    <script src="js/ai-impact-visualization.js"></script>
+</body>
+</html>

@@ -5,40 +5,58 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Wait for the AI showcase to be loaded
-    const checkShowcaseLoaded = setInterval(() => {
+    // Give the showcase a moment to load
+    setTimeout(() => {
         const showcaseContainer = document.getElementById('ai-showcase-container');
-        if (showcaseContainer && !showcaseContainer.querySelector('.loading-indicator')) {
-            clearInterval(checkShowcaseLoaded);
+        if (showcaseContainer) {
             initializeVisualizations();
         }
-    }, 500);
+    }, 1000);
 });
 
 function initializeVisualizations() {
-    // Add visualization container to each project in the showcase
-    const aiProjects = document.querySelectorAll('.ai-project-card');
-    
-    aiProjects.forEach(project => {
-        const projectId = project.getAttribute('data-project-id');
-        const metricsSection = project.querySelector('.project-metrics');
+    try {
+        console.log('Initializing AI showcase visualizations...');
+        // Add visualization container to each project in the showcase
+        const aiProjects = document.querySelectorAll('.ai-project-card');
+        console.log(`Found ${aiProjects.length} AI project cards`);
         
-        if (metricsSection) {
-            // Create canvas for chart
-            const chartContainer = document.createElement('div');
-            chartContainer.className = 'chart-container mt-6';
-            chartContainer.style.height = '300px';
-            
-            const canvas = document.createElement('canvas');
-            canvas.id = `chart-${projectId}`;
-            chartContainer.appendChild(canvas);
-            
-            metricsSection.appendChild(chartContainer);
-            
-            // Create visualization based on project type
-            createVisualizationForProject(projectId, canvas.id);
+        if (aiProjects.length === 0) {
+            console.warn('No AI project cards found. Retrying in 500ms...');
+            setTimeout(initializeVisualizations, 500);
+            return;
         }
-    });
+        
+        aiProjects.forEach(project => {
+            try {
+                const projectId = project.getAttribute('data-project-id');
+                console.log(`Processing project: ${projectId}`);
+                const metricsSection = project.querySelector('.project-metrics');
+                
+                if (metricsSection) {
+                    // Create canvas for chart
+                    const chartContainer = document.createElement('div');
+                    chartContainer.className = 'chart-container mt-6';
+                    chartContainer.style.height = '300px';
+                    
+                    const canvas = document.createElement('canvas');
+                    canvas.id = `chart-${projectId}`;
+                    chartContainer.appendChild(canvas);
+                    
+                    metricsSection.appendChild(chartContainer);
+                    
+                    // Create visualization based on project type
+                    createVisualizationForProject(projectId, canvas.id);
+                } else {
+                    console.warn(`No metrics section found for project: ${projectId}`);
+                }
+            } catch (projectError) {
+                console.error(`Error processing project: ${projectError.message}`);
+            }
+        });
+    } catch (error) {
+        console.error(`Error initializing visualizations: ${error.message}`);
+    }
     
     // Add overall impact visualization section
     createOverallImpactVisualization();

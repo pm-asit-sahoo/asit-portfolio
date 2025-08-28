@@ -1,17 +1,27 @@
 // AI Showcase Component for Portfolio
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('AI Showcase: DOM Content Loaded');
     // Create the AI showcase section if the container exists
     const showcaseContainer = document.getElementById('ai-showcase-container');
     if (showcaseContainer) {
+        console.log('AI Showcase: Container found, creating showcase');
         createAIShowcase(showcaseContainer);
+    } else {
+        console.error('AI Showcase: Container not found!');
     }
 });
 
 // Create the AI showcase UI and functionality
 function createAIShowcase(container) {
+    console.log('AI Showcase: Creating showcase content');
+    // Clear loading indicator
+    container.innerHTML = '';
+    console.log('AI Showcase: Cleared loading indicator');
+    
     // Main showcase wrapper
     const showcaseWrapper = document.createElement('div');
     showcaseWrapper.className = 'bg-white rounded-lg shadow-xl p-6 mb-10';
+    console.log('AI Showcase: Created main wrapper');
     
     // Title
     const title = document.createElement('h2');
@@ -94,6 +104,8 @@ function createAIShowcase(container) {
 // Create content for RAG Chatbot showcase
 function createRAGChatbotContent() {
     const content = document.createElement('div');
+    content.className = 'ai-project-card';
+    content.setAttribute('data-project-id', 'rag-chatbot');
     
     // Architecture diagram
     const diagram = document.createElement('div');
@@ -132,7 +144,8 @@ function createRAGChatbotContent() {
     
     // Performance metrics
     const metrics = document.createElement('div');
-    metrics.className = 'mb-6';
+    metrics.className = 'mb-6 project-metrics';
+    metrics.id = 'metrics-rag-chatbot';
     metrics.innerHTML = `
         <h3 class="text-xl font-semibold mb-3">Performance Metrics</h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -177,6 +190,8 @@ function createRAGChatbotContent() {
 // Create content for AI Test Generator showcase
 function createTestGeneratorContent() {
     const content = document.createElement('div');
+    content.className = 'ai-project-card';
+    content.setAttribute('data-project-id', 'test-generator');
     
     // Architecture diagram
     const diagram = document.createElement('div');
@@ -218,7 +233,8 @@ function createTestGeneratorContent() {
     
     // Performance metrics
     const metrics = document.createElement('div');
-    metrics.className = 'mb-6';
+    metrics.className = 'mb-6 project-metrics';
+    metrics.id = 'metrics-ai-test-generator';
     metrics.innerHTML = `
         <h3 class="text-xl font-semibold mb-3">Performance Metrics</h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -263,6 +279,8 @@ function createTestGeneratorContent() {
 // Create content for AI Observability showcase
 function createObservabilityContent() {
     const content = document.createElement('div');
+    content.className = 'ai-project-card';
+    content.setAttribute('data-project-id', 'ai-observability');
     
     // Architecture diagram
     const diagram = document.createElement('div');
@@ -310,7 +328,8 @@ function createObservabilityContent() {
     
     // Performance metrics
     const metrics = document.createElement('div');
-    metrics.className = 'mb-6';
+    metrics.className = 'mb-6 project-metrics';
+    metrics.id = 'metrics-ai-observability';
     metrics.innerHTML = `
         <h3 class="text-xl font-semibold mb-3">Performance Metrics</h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -355,6 +374,8 @@ function createObservabilityContent() {
 // Create content for Semantic Search showcase
 function createSemanticSearchContent() {
     const content = document.createElement('div');
+    content.className = 'ai-project-card';
+    content.setAttribute('data-project-id', 'semantic-search');
     
     // Architecture diagram
     const diagram = document.createElement('div');
@@ -396,7 +417,8 @@ function createSemanticSearchContent() {
     
     // Performance metrics
     const metrics = document.createElement('div');
-    metrics.className = 'mb-6';
+    metrics.className = 'mb-6 project-metrics';
+    metrics.id = 'metrics-semantic-search';
     metrics.innerHTML = `
         <h3 class="text-xl font-semibold mb-3">Performance Metrics</h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
