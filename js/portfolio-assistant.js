@@ -378,11 +378,14 @@ function initChatbot() {
             }
         ],
         uniqueSellingPoints: [
-            "Unique combination of deep testing expertise and innovative AI integration",
-            "Creates intelligent solutions that transform testing processes",
-            "Open-source contributor to industry-standard tools",
-            "Proven track record of improving efficiency through automation",
-            "Strong leadership and mentoring abilities"
+            "Pioneer in applying RAG architecture to QE tools, reducing testing time by 60% and increasing defect detection by 35%",
+            "Architect of AI observability systems using Langfuse and MCP server that improved prompt performance by 25%",
+            "Active open-source contributor with 15+ merged PRs to Prebid.js, the industry's leading header bidding solution",
+            "Creator of semantic search systems across technical documentation that reduced knowledge retrieval time by 70%",
+            "Designed and implemented vector embedding systems for intelligent test case generation across multiple teams",
+            "Recognized thought leader with presentations on AI-powered testing at industry conferences",
+            "Mentor who has guided 10+ junior engineers in AI and automation technologies",
+            "Unique combination of deep testing expertise and cutting-edge AI implementation skills"
         ]
     };
 
