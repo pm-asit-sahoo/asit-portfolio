@@ -42,9 +42,9 @@ function createSkillsSearchUI() {
                         <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">Testing</button>
                         <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">CI/CD</button>
                         <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">Prompt Engineering</button>
-                        <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">Kubernetes</button>
-                        <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">Leadership</button>
-                        <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">SOLID Principles</button>
+                        <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">RFP</button>
+                        <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">POC</button>
+                        <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">Solution Architecture</button>
                         <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">Design Patterns</button>
                     </div>
                 </div>
@@ -504,6 +504,62 @@ function initSkillsSearch() {
             description: "Using AI for automated code generation and code completion tasks.",
             projects: ["Universal Test Case Generator"],
             location: "#skills"
+        },
+        {
+            name: "RFP Management",
+            category: "Automation Architect",
+            proficiency: 92,
+            description: "Experience in creating and responding to Request for Proposals (RFPs) for automation projects, including requirement analysis and solution design.",
+            projects: ["Test Automation Framework"],
+            location: "#architect-skills"
+        },
+        {
+            name: "POC Development",
+            category: "Automation Architect",
+            proficiency: 95,
+            description: "Expert in creating Proof of Concept (POC) implementations to validate automation approaches and technologies before full-scale deployment.",
+            projects: ["AI-Powered Prebid Chatbot", "Universal Test Case Generator"],
+            location: "#architect-skills"
+        },
+        {
+            name: "Solution Architecture",
+            category: "Automation Architect",
+            proficiency: 90,
+            description: "Designing comprehensive automation solutions that address business requirements while considering scalability, maintainability, and performance.",
+            projects: ["Test Automation Framework", "AI-Powered Prebid Chatbot"],
+            location: "#architect-skills"
+        },
+        {
+            name: "Technical Roadmapping",
+            category: "Automation Architect",
+            proficiency: 88,
+            description: "Creating strategic technical roadmaps for automation initiatives with clear milestones, dependencies, and resource planning.",
+            projects: ["Test Automation Framework"],
+            location: "#architect-skills"
+        },
+        {
+            name: "Vendor Evaluation",
+            category: "Automation Architect",
+            proficiency: 85,
+            description: "Experience in evaluating and selecting automation tools, frameworks, and vendor solutions based on project requirements and constraints.",
+            projects: [],
+            location: "#architect-skills"
+        },
+        {
+            name: "Enterprise Integration",
+            category: "Automation Architect",
+            proficiency: 90,
+            description: "Expertise in integrating automation solutions with enterprise systems, ensuring seamless data flow and process coordination.",
+            projects: ["Test Automation Framework", "AI-Powered Prebid Chatbot"],
+            location: "#architect-skills"
+        },
+        {
+            name: "Cost-Benefit Analysis",
+            category: "Automation Architect",
+            proficiency: 85,
+            description: "Conducting thorough cost-benefit analyses for automation initiatives, including ROI calculations and resource optimization strategies.",
+            projects: [],
+            location: "#architect-skills"
         }
     ];
     
