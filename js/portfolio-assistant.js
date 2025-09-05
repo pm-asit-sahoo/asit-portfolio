@@ -315,17 +315,26 @@ const knowledgeBase = {
             email: "sahooasit@hotmail.com",
             phone: "+91 9040293063",
             education: "Bachelor of Technology in Computer Science & Engineering from Biju Patnaik University of Technology",
-            summary: "Experienced Lead SDET with 9+ years of expertise in application testing and designing Hybrid Automation Frameworks for Web, Windows, and APIs. Skilled in CI/CD, agile practices, and building robust GenAI tools."
+            summary: "Experienced Lead SDET with 9+ years of expertise in application testing and designing Hybrid Automation Frameworks for Web, Windows, and APIs. Skilled in CI/CD, agile practices, and building robust GenAI tools.",
+            specialization: "GenAI, Automation Framework Design, Hybrid Automation Frameworks, Vibe Coder"
         },
         skills: {
             programming: [
                 { name: "Python", proficiency: 95 },
-                { name: "JavaScript", proficiency: 90 },
+                { name: "JavaScript", proficiency: 70 },
                 { name: "C#", proficiency: 90 },
                 { name: "Java", proficiency: 85 },
                 { name: "HTML/CSS", proficiency: 85 },
                 { name: "Bash Scripting", proficiency: 85 },
                 { name: "Groovy", proficiency: 80 }
+            ],
+            architect: [
+                { name: "POC Development", proficiency: 95 },
+                { name: "RFP Analysis", proficiency: 90 },
+                { name: "Design Framework", proficiency: 95 },
+                { name: "QA Infrastructure Design", proficiency: 90 },
+                { name: "Solution Architecture", proficiency: 95 },
+                { name: "Technical Documentation", proficiency: 90 }
             ],
             automation: [
                 { name: "Robot Framework", proficiency: 95 },
@@ -517,12 +526,12 @@ function getBotResponse(message) {
             },
             {
                 topic: "ai",
-                patterns: ["ai", "ml", "artificial intelligence", "machine learning", "genai", "llm", "prompt engineering", "chatgpt", "claude"],
+                patterns: ["ai", "ml", "artificial intelligence", "machine learning", "genai", "llm", "prompt engineering", "chatgpt", "claude", "rag", "langchain", "langgraph", "vector embeddings"],
                 responseGenerator: () => {
                     const aiProjects = knowledgeBase.projects.filter(p => 
                         p.technologies && p.technologies.some(t => t.includes("AI") || t.includes("OpenAI") || t.includes("Claude"))
                     ).map(p => p.name).join(" and ");
-                    return `Asit has developed several AI-powered tools including ${aiProjects}. He's skilled in prompt engineering (${knowledgeBase.skills.ai.find(s => s.name === "Prompt Engineering").proficiency}%) and LLM integration (${knowledgeBase.skills.ai.find(s => s.name === "LLM Integration").proficiency}%), applying these skills to create practical business applications that solve real-world problems.`;
+                    return `Asit has developed several AI-powered tools including ${aiProjects}. His portfolio now features a combined AI & ML section that includes GenAI (90%), Prompt Engineering (90%), LLM Integration (85%), and Streamlit (85%). He specializes in applying these technologies to create practical business applications that solve real-world problems, with particular expertise in RAG architecture, LangChain, LangGraph, and vector embeddings for semantic search.`;
                 },
                 threshold: 0.6
             },
@@ -550,7 +559,8 @@ function getBotResponse(message) {
                 responseGenerator: () => {
                     const topProgramming = knowledgeBase.skills.programming.filter(s => s.proficiency >= 90).map(s => s.name).join(", ");
                     const topAutomation = knowledgeBase.skills.automation.filter(s => s.proficiency >= 90).map(s => s.name).join(", ");
-                    return `Asit's key skills include: Automation (with expertise in ${topAutomation}), Programming Languages (particularly ${topProgramming}), AI & ML integration (${knowledgeBase.skills.ai[0].proficiency}%), DevOps & CI/CD (${knowledgeBase.skills.devops.find(s => s.name === "CI/CD").proficiency}%), and comprehensive Testing methodologies. He also has strong leadership abilities (${knowledgeBase.skills.soft.find(s => s.name === "Leadership").proficiency}%) and experience mentoring teams.`;
+                    const topArchitect = knowledgeBase.skills.architect.filter(s => s.proficiency >= 90).map(s => s.name).join(", ");
+                    return `Asit's key skills include: Automation (with expertise in ${topAutomation}), Programming Languages (particularly ${topProgramming}), AI & ML integration (${knowledgeBase.skills.ai[0].proficiency}%), DevOps & CI/CD (${knowledgeBase.skills.devops.find(s => s.name === "CI/CD").proficiency}%), and comprehensive Testing methodologies. He also has strong architect skills (${topArchitect}), leadership abilities (${knowledgeBase.skills.soft.find(s => s.name === "Leadership").proficiency}%), and experience mentoring teams. His specialization includes ${knowledgeBase.profile.specialization}.`;
                 },
                 threshold: 0.6
             },
@@ -639,6 +649,15 @@ function getBotResponse(message) {
         // Add topic extractors for new skills
         topicExtractors.push(
             {
+                topic: "architect",
+                patterns: ["architect", "architecture", "poc", "rfp", "design framework", "qa infrastructure", "solution architecture", "technical documentation", "proof of concept", "request for proposal"],
+                responseGenerator: () => {
+                    const topSkills = knowledgeBase.skills.architect.filter(s => s.proficiency >= 90).map(s => s.name).join(", ");
+                    return `Asit has strong architect skills with expertise in ${topSkills}. He specializes in developing proof of concepts, analyzing RFPs, designing frameworks, and creating QA infrastructure. His architectural approach focuses on scalability, maintainability, and efficiency, ensuring solutions meet both current and future needs.`;
+                },
+                threshold: 0.6
+            },
+            {
                 topic: "frameworkDevelopment",
                 patterns: ["framework development", "test framework", "automation framework", "framework architecture", "framework design", "page object model", "pom", "data-driven", "keyword-driven", "framework from scratch"],
                 responseGenerator: () => {
@@ -661,6 +680,14 @@ function getBotResponse(message) {
                 patterns: ["api testing", "rest api", "restful", "rest assured", "postman", "soap", "graphql", "api automation", "web services", "microservices"],
                 responseGenerator: () => {
                     return `Asit is highly skilled in API testing with ${knowledgeBase.skills.apiTesting.find(s => s.name === "REST API").proficiency}% proficiency in REST API testing and ${knowledgeBase.skills.apiTesting.find(s => s.name === "REST Assured").proficiency}% in REST Assured. He has extensive experience testing RESTful services, SOAP web services, and GraphQL APIs. His API testing approach includes validation of request/response formats, status codes, authentication mechanisms, and performance characteristics.`;
+                },
+                threshold: 0.6
+            },
+            {
+                topic: "thoughtLeadership",
+                patterns: ["thought leadership", "blog posts", "articles", "publications", "conference talks", "tutorials", "guides", "real-time content", "dynamic content", "api integration"],
+                responseGenerator: () => {
+                    return `The Thought Leadership section of Asit's portfolio has been revamped to use real-time data from third-party APIs instead of static content. It now fetches content from sources like Medium, Dev.to, and GitHub repositories, displaying blog posts, conference talks, articles, and tutorials dynamically. The section features loading states, error handling with retry functionality, and randomized content display to simulate a live data feed. This implementation ensures that the content stays up-to-date automatically as new articles or talks are published.`;
                 },
                 threshold: 0.6
             }
@@ -709,6 +736,7 @@ function getBotResponse(message) {
             ...knowledgeBase.skills.devops,
             ...knowledgeBase.skills.ai,
             ...knowledgeBase.skills.soft,
+            ...knowledgeBase.skills.architect,
             ...knowledgeBase.skills.frameworkDevelopment,
             ...knowledgeBase.skills.performanceTesting,
             ...knowledgeBase.skills.apiTesting
@@ -722,6 +750,7 @@ function getBotResponse(message) {
                 else if (knowledgeBase.skills.devops.some(s => s.name === skill.name)) category = "DevOps";
                 else if (knowledgeBase.skills.ai.some(s => s.name === skill.name)) category = "AI/ML";
                 else if (knowledgeBase.skills.soft.some(s => s.name === skill.name)) category = "soft skills";
+                else if (knowledgeBase.skills.architect.some(s => s.name === skill.name)) category = "architect skills";
                 
                 response = `Asit has a ${skill.proficiency}% proficiency in ${skill.name}, which is one of his key ${category} skills. `;
                 
@@ -736,6 +765,8 @@ function getBotResponse(message) {
                     response += `He leverages this skill to create intelligent testing solutions and AI-powered tools.`;
                 } else if (category === "soft skills") {
                     response += `This is essential to his role as a Senior Lead SDET, where he guides teams and initiatives.`;
+                } else if (category === "architect skills") {
+                    response += `This is a key part of his architectural expertise, allowing him to design and implement robust, scalable solutions.`;
                 }
                 
                 matchFound = true;
