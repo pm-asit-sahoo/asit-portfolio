@@ -376,6 +376,134 @@ function initSkillsSearch() {
             description: "Passionate about mentoring junior team members and helping them develop their skills.",
             projects: [],
             location: "#skills"
+        },
+        {
+            name: "RAG",
+            category: "AI & ML",
+            proficiency: 90,
+            description: "Expertise in Retrieval Augmented Generation for enhancing LLM responses with contextual information.",
+            projects: ["AI-Powered Prebid Chatbot", "Universal Test Case Generator"],
+            location: "#skills"
+        },
+        {
+            name: "LangChain",
+            category: "AI & ML",
+            proficiency: 90,
+            description: "Proficient in using LangChain framework for building applications with language models.",
+            projects: ["AI-Powered Prebid Chatbot"],
+            location: "#skills"
+        },
+        {
+            name: "LangGraph",
+            category: "AI & ML",
+            proficiency: 85,
+            description: "Experience with LangGraph for orchestrating complex workflows between multiple AI agents.",
+            projects: ["AI-Powered Prebid Chatbot"],
+            location: "#skills"
+        },
+        {
+            name: "Langfuse",
+            category: "AI & ML",
+            proficiency: 80,
+            description: "Implementation of Langfuse for monitoring and observability of LLM applications.",
+            projects: ["AI-Powered Prebid Chatbot"],
+            location: "#skills"
+        },
+        {
+            name: "Hugging Face Models",
+            category: "AI & ML",
+            proficiency: 85,
+            description: "Working with various Hugging Face models for NLP and machine learning tasks.",
+            projects: ["Universal Test Case Generator"],
+            location: "#skills"
+        },
+        {
+            name: "Transformers",
+            category: "AI & ML",
+            proficiency: 80,
+            description: "Experience with transformer-based models for natural language processing tasks.",
+            projects: ["Universal Test Case Generator"],
+            location: "#skills"
+        },
+        {
+            name: "MCP Server",
+            category: "AI & ML",
+            proficiency: 85,
+            description: "Working with Model Context Protocol servers for connecting AI systems with external tools and data sources.",
+            projects: ["AI-Powered Prebid Chatbot"],
+            location: "#skills"
+        },
+        {
+            name: "Vibe Coding",
+            category: "AI & ML",
+            proficiency: 85,
+            description: "Implementation of Vibe Coding techniques for intuitive and efficient code generation with AI.",
+            projects: ["Universal Test Case Generator"],
+            location: "#skills"
+        },
+        {
+            name: "Agentic Framework",
+            category: "AI Architecture",
+            proficiency: 90,
+            description: "Design and implementation of agentic AI frameworks for autonomous task execution and problem-solving.",
+            projects: ["AI-Powered Prebid Chatbot"],
+            location: "#skills"
+        },
+        {
+            name: "Multi-Agent Systems",
+            category: "AI Architecture",
+            proficiency: 85,
+            description: "Building systems with multiple specialized AI agents that collaborate to solve complex problems.",
+            projects: ["AI-Powered Prebid Chatbot"],
+            location: "#skills"
+        },
+        {
+            name: "Tool Integration",
+            category: "AI Architecture",
+            proficiency: 90,
+            description: "Integrating external tools and APIs with AI systems for enhanced capabilities and real-world interaction.",
+            projects: ["AI-Powered Prebid Chatbot", "Universal Test Case Generator"],
+            location: "#skills"
+        },
+        {
+            name: "Vector Embeddings",
+            category: "AI & ML",
+            proficiency: 85,
+            description: "Working with vector embeddings for semantic search and similarity matching in AI applications.",
+            projects: ["AI-Powered Prebid Chatbot"],
+            location: "#skills"
+        },
+        {
+            name: "Semantic Search",
+            category: "AI & ML",
+            proficiency: 90,
+            description: "Implementation of semantic search capabilities for intelligent information retrieval.",
+            projects: ["AI-Powered Prebid Chatbot"],
+            location: "#skills"
+        },
+        {
+            name: "Framework Architecture",
+            category: "Architecture",
+            proficiency: 95,
+            description: "Expert in designing and implementing scalable, maintainable software architectures for testing and automation.",
+            projects: ["Test Automation Framework", "Universal Test Case Generator"],
+            location: "#skills"
+        },
+        {
+            name: "Workflow Automation",
+            category: "AI & ML",
+            proficiency: 95,
+            description: "Creating automated workflows powered by AI for increased efficiency and productivity.",
+            projects: ["Universal Test Case Generator", "AI-Powered Prebid Chatbot"],
+            location: "#skills"
+        },
+        {
+            name: "Code Generation",
+            category: "AI & ML",
+            proficiency: 90,
+            description: "Using AI for automated code generation and code completion tasks.",
+            projects: ["Universal Test Case Generator"],
+            location: "#skills"
         }
     ];
     
