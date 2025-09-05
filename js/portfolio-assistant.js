@@ -71,9 +71,17 @@ function createChatbotUI() {
             <i class="fas fa-robot mr-2"></i>
             <span class="font-medium">Asit's Portfolio Assistant</span>
         </div>
-        <button id="close-chat" class="text-white hover:text-gray-200 focus:outline-none">
-            <i class="fas fa-times"></i>
-        </button>
+        <div class="flex items-center">
+            <button id="decrease-size" class="text-white hover:text-gray-200 focus:outline-none mr-3" title="Decrease Size">
+                <i class="fas fa-search-minus"></i>
+            </button>
+            <button id="increase-size" class="text-white hover:text-gray-200 focus:outline-none mr-3" title="Increase Size">
+                <i class="fas fa-search-plus"></i>
+            </button>
+            <button id="close-chat" class="text-white hover:text-gray-200 focus:outline-none">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
     `;
     
     // Chat messages container
@@ -184,6 +192,55 @@ function initChatbot() {
     const chatInput = document.getElementById('chat-input');
     const sendMessage = document.getElementById('send-message');
     const chatMessages = document.getElementById('chat-messages');
+    const increaseSize = document.getElementById('increase-size');
+    const decreaseSize = document.getElementById('decrease-size');
+    
+    // Size state tracking
+    let currentSizeIndex = 1; // 0: small, 1: medium (default), 2: large
+    const sizes = [
+        { width: '280px', height: '350px', class: 'text-sm' },
+        { width: '320px', height: '400px', class: 'text-base' },
+        { width: '380px', height: '500px', class: 'text-lg' }
+    ];
+    
+    // Function to apply size
+    function applySize(sizeIndex) {
+        const size = sizes[sizeIndex];
+        chatWindow.style.width = size.width;
+        chatWindow.style.height = size.height;
+        
+        // Update text size classes
+        chatWindow.classList.remove('text-sm', 'text-base', 'text-lg');
+        chatWindow.classList.add(size.class);
+        
+        // Store the current size preference in localStorage
+        localStorage.setItem('portfolioAssistantSize', sizeIndex);
+    }
+    
+    // Load saved size preference if available
+    const savedSizeIndex = localStorage.getItem('portfolioAssistantSize');
+    if (savedSizeIndex !== null) {
+        currentSizeIndex = parseInt(savedSizeIndex);
+        applySize(currentSizeIndex);
+    }
+    
+    // Increase size button
+    increaseSize.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (currentSizeIndex < sizes.length - 1) {
+            currentSizeIndex++;
+            applySize(currentSizeIndex);
+        }
+    });
+    
+    // Decrease size button
+    decreaseSize.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (currentSizeIndex > 0) {
+            currentSizeIndex--;
+            applySize(currentSizeIndex);
+        }
+    });
     
     // Toggle chat window visibility
     chatButton.addEventListener('click', function() {
