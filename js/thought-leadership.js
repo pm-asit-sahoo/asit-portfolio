@@ -303,25 +303,45 @@ async function fetchContentByType(contentType) {
     
     // For demonstration purposes, we'll simulate API calls with a delay
     // This ensures we can see the loading states
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    const randomDelay = 1000 + Math.random() * 2000; // Random delay between 1-3 seconds
+    await new Promise(resolve => setTimeout(resolve, randomDelay));
     
     try {
         // In a real implementation, you would make actual API calls here
         // For now, we'll use the fallback content but simulate a network request
         
-        // Simulate a 20% chance of an error to test error handling
-        if (Math.random() < 0.2) {
+        // Simulate a 15% chance of an error to test error handling
+        if (Math.random() < 0.15) {
             throw new Error('Simulated API error');
         }
         
-        // Get the fallback content for now
-        // In a real implementation, you would replace this with actual API calls
-        const content = getFallbackContent(contentType);
+        // Get the fallback content
+        const allContent = getFallbackContent(contentType);
+        
+        // Simulate varying number of results to make it feel more dynamic
+        const randomizeContent = () => {
+            // Sometimes return all content, sometimes return a subset
+            const randomFactor = Math.random();
+            
+            if (randomFactor > 0.7) {
+                // Return all content (30% chance)
+                return allContent;
+            } else if (randomFactor > 0.4) {
+                // Return a random subset (30% chance)
+                const shuffled = [...allContent].sort(() => 0.5 - Math.random());
+                return shuffled.slice(0, Math.max(1, Math.floor(Math.random() * allContent.length)));
+            } else {
+                // Return content in different order (40% chance)
+                return [...allContent].sort(() => 0.5 - Math.random());
+            }
+        };
+        
+        const dynamicContent = randomizeContent();
         
         // Log success
-        console.log(`Successfully fetched ${contentType} content:`, content);
+        console.log(`Successfully fetched ${contentType} content:`, dynamicContent);
         
-        return content;
+        return dynamicContent;
     } catch (error) {
         console.error(`Error fetching ${contentType}:`, error);
         // Return fallback content
