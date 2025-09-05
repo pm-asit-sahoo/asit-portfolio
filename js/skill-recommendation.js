@@ -172,7 +172,10 @@ function setupRecommendationSystem() {
                 { name: "Multi-platform Testing", required: 90, actual: 85 },
                 { name: "Performance Optimization", required: 85, actual: 80 },
                 { name: "DevOps Integration", required: 80, actual: 88 },
-                { name: "Advanced Programming", required: 85, actual: 90 }
+                { name: "Advanced Programming", required: 85, actual: 90 },
+                { name: "GenAI & LLM Integration", required: 90, actual: 92 },
+                { name: "Agentic Framework Development", required: 85, actual: 88 },
+                { name: "Prompt Engineering", required: 85, actual: 90 }
             ]
         },
         "ai-engineer": {
@@ -284,6 +287,8 @@ function setupRecommendationSystem() {
             
             roleData.skills.forEach(skill => {
                 const matchPercentage = Math.round((skill.actual / skill.required) * 100);
+                // Cap the display percentage at 100% to prevent bars from going out of bounds
+                const displayPercentage = Math.min(matchPercentage, 100);
                 const matchClass = matchPercentage >= 100 ? 'bg-green-500' : 
                                   matchPercentage >= 90 ? 'bg-blue-500' : 
                                   matchPercentage >= 80 ? 'bg-yellow-500' : 'bg-red-500';
@@ -306,7 +311,7 @@ function setupRecommendationSystem() {
                 // Animate progress bars
                 setTimeout(() => {
                     const progressBar = skillItem.querySelector('.skill-match-item');
-                    progressBar.style.width = `${(skill.actual / skill.required) * 100}%`;
+                    progressBar.style.width = `${displayPercentage}%`;
                 }, 100);
             });
         } else {
