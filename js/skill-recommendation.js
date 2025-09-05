@@ -175,7 +175,13 @@ function setupRecommendationSystem() {
                 { name: "Advanced Programming", required: 85, actual: 90 },
                 { name: "GenAI & LLM Integration", required: 90, actual: 92 },
                 { name: "Agentic Framework Development", required: 85, actual: 88 },
-                { name: "Prompt Engineering", required: 85, actual: 90 }
+                { name: "Prompt Engineering", required: 85, actual: 90 },
+                { name: "POC Development", required: 95, actual: 95 },
+                { name: "RFP Analysis", required: 90, actual: 90 },
+                { name: "Design Framework", required: 95, actual: 95 },
+                { name: "QA Infrastructure Design", required: 90, actual: 90 },
+                { name: "Solution Architecture", required: 95, actual: 95 },
+                { name: "Technical Documentation", required: 90, actual: 90 }
             ]
         },
         "ai-engineer": {
