@@ -5,6 +5,40 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize the chatbot functionality
     initChatbot();
+    
+    // Auto-open the chatbot after a short delay to ensure everything is loaded
+    setTimeout(function() {
+        const chatButton = document.getElementById('chat-button');
+        const chatWindow = document.getElementById('chat-window');
+        
+        // Auto-open the chat window
+        if (chatWindow.classList.contains('scale-0')) {
+            chatWindow.classList.remove('scale-0');
+            chatWindow.classList.add('scale-100');
+            
+            // Add welcome message if it's the first time opening
+            const chatMessages = document.getElementById('chat-messages');
+            if (chatMessages.children.length === 0) {
+                addBotMessage("👋 Hi there! I'm Asit's portfolio assistant. How can I help you learn more about his skills and experience?");
+                
+                // Add suggested questions
+                setTimeout(() => {
+                    addSuggestedQuestions([
+                        "Tell me about your automation experience",
+                        "What AI projects have you worked on?",
+                        "What makes you stand out?",
+                        "What are your key skills?"
+                    ]);
+                }, 500);
+            }
+            
+            // Auto-close after 5 seconds
+            setTimeout(function() {
+                chatWindow.classList.remove('scale-100');
+                chatWindow.classList.add('scale-0');
+            }, 5000);
+        }
+    }, 1000); // Wait 1 second after page load before auto-opening
 });
 
 // Create the chatbot UI elements
@@ -74,6 +108,71 @@ function createChatbotUI() {
     
     // Add the container to the body
     document.body.appendChild(chatbotContainer);
+}
+
+// Global functions for chat messages
+// Function to add a bot message to the chat
+function addBotMessage(message) {
+    const chatMessages = document.getElementById('chat-messages');
+    const messageElement = document.createElement('div');
+    messageElement.className = 'flex justify-start';
+    messageElement.innerHTML = `
+        <div class="bg-gray-200 text-gray-800 rounded-lg py-2 px-4 max-w-3/4">
+            <p>${message}</p>
+        </div>
+    `;
+    chatMessages.appendChild(messageElement);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+// Function to add suggested questions
+function addSuggestedQuestions(questions) {
+    const chatMessages = document.getElementById('chat-messages');
+    const suggestionsElement = document.createElement('div');
+    suggestionsElement.className = 'flex justify-start';
+    
+    let suggestionsHTML = '<div class="flex flex-wrap gap-2">';
+    questions.forEach(question => {
+        suggestionsHTML += `
+            <button class="suggested-question bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm rounded-full py-1 px-3 transition">
+                ${question}
+            </button>
+        `;
+    });
+    suggestionsHTML += '</div>';
+    
+    suggestionsElement.innerHTML = suggestionsHTML;
+    chatMessages.appendChild(suggestionsElement);
+    
+    // Add click event to suggested questions
+    document.querySelectorAll('.suggested-question').forEach(button => {
+        button.addEventListener('click', function() {
+            const question = this.textContent.trim();
+            addUserMessage(question);
+            
+            // Get bot response with slight delay
+            setTimeout(() => {
+                const response = getBotResponse(question);
+                addBotMessage(response);
+            }, 600);
+        });
+    });
+    
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+// Function to add a user message to the chat
+function addUserMessage(message) {
+    const chatMessages = document.getElementById('chat-messages');
+    const messageElement = document.createElement('div');
+    messageElement.className = 'flex justify-end';
+    messageElement.innerHTML = `
+        <div class="bg-blue-100 text-gray-800 rounded-lg py-2 px-4 max-w-3/4">
+            <p>${message}</p>
+        </div>
+    `;
+    chatMessages.appendChild(messageElement);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
 // Initialize chatbot functionality
@@ -146,70 +245,10 @@ function initChatbot() {
             }, 600);
         }
     }
-    
-    // Function to add a user message to the chat
-    function addUserMessage(message) {
-        const messageElement = document.createElement('div');
-        messageElement.className = 'flex justify-end';
-        messageElement.innerHTML = `
-            <div class="bg-blue-100 text-gray-800 rounded-lg py-2 px-4 max-w-3/4">
-                <p>${message}</p>
-            </div>
-        `;
-        chatMessages.appendChild(messageElement);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-    
-    // Function to add a bot message to the chat
-    function addBotMessage(message) {
-        const messageElement = document.createElement('div');
-        messageElement.className = 'flex justify-start';
-        messageElement.innerHTML = `
-            <div class="bg-gray-200 text-gray-800 rounded-lg py-2 px-4 max-w-3/4">
-                <p>${message}</p>
-            </div>
-        `;
-        chatMessages.appendChild(messageElement);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-    
-    // Function to add suggested questions
-    function addSuggestedQuestions(questions) {
-        const suggestionsElement = document.createElement('div');
-        suggestionsElement.className = 'flex justify-start';
-        
-        let suggestionsHTML = '<div class="flex flex-wrap gap-2">';
-        questions.forEach(question => {
-            suggestionsHTML += `
-                <button class="suggested-question bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm rounded-full py-1 px-3 transition">
-                    ${question}
-                </button>
-            `;
-        });
-        suggestionsHTML += '</div>';
-        
-        suggestionsElement.innerHTML = suggestionsHTML;
-        chatMessages.appendChild(suggestionsElement);
-        
-        // Add click event to suggested questions
-        document.querySelectorAll('.suggested-question').forEach(button => {
-            button.addEventListener('click', function() {
-                const question = this.textContent.trim();
-                addUserMessage(question);
-                
-                // Get bot response with slight delay
-                setTimeout(() => {
-                    const response = getBotResponse(question);
-                    addBotMessage(response);
-                }, 600);
-            });
-        });
-        
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-    
-    // Comprehensive knowledge base about Asit
-    const knowledgeBase = {
+}
+
+// Comprehensive knowledge base about Asit
+const knowledgeBase = {
         profile: {
             name: "Asit Sahoo",
             title: "Senior Lead SDET",
@@ -389,18 +428,18 @@ function initChatbot() {
         ]
     };
 
-    // Function to generate bot responses based on user input
-    function getBotResponse(message) {
-        // Convert message to lowercase for easier processing
-        const lowerMessage = message.toLowerCase();
-        
-        // Initialize response variables
-        let response = "";
-        let matchFound = false;
-        let confidenceScore = 0;
-        
-        // Define topic extractors with their patterns and response generators
-        const topicExtractors = [
+// Function to generate bot responses based on user input
+function getBotResponse(message) {
+    // Convert message to lowercase for easier processing
+    const lowerMessage = message.toLowerCase();
+    
+    // Initialize response variables
+    let response = "";
+    let matchFound = false;
+    let confidenceScore = 0;
+    
+    // Define topic extractors with their patterns and response generators
+    const topicExtractors = [
             {
                 topic: "greeting",
                 patterns: ["hello", "hi", "hey", "greetings", "good morning", "good afternoon", "good evening"],
@@ -671,25 +710,24 @@ function initChatbot() {
         return response;
     }
     
-    // Helper function to extract the main topic from a message
-    function extractMainTopic(message) {
-        const commonWords = ["the", "a", "an", "and", "or", "but", "in", "on", "at", "to", "for", "with", "about", "is", "are", "was", "were", "be", "been", "being", "have", "has", "had", "do", "does", "did", "can", "could", "will", "would", "should", "may", "might", "must", "you", "your", "yours", "he", "him", "his", "she", "her", "hers", "it", "its", "they", "them", "their", "theirs", "we", "us", "our", "ours", "i", "me", "my", "mine"];
-        
-        // Remove common words and split into individual words
-        const words = message.split(/\s+/).filter(word => !commonWords.includes(word));
-        
-        if (words.length === 0) {
-            return "Asit's background";
-        }
-        
-        // Find the longest word as it might be more significant
-        let mainTopic = words.reduce((longest, current) => current.length > longest.length ? current : longest, "");
-        
-        // If the main topic is very short, use a combination of words
-        if (mainTopic.length < 4 && words.length > 1) {
-            mainTopic = words.slice(0, 2).join(" ");
-        }
-        
-        return mainTopic || "Asit's professional background";
+// Helper function to extract the main topic from a message
+function extractMainTopic(message) {
+    const commonWords = ["the", "a", "an", "and", "or", "but", "in", "on", "at", "to", "for", "with", "about", "is", "are", "was", "were", "be", "been", "being", "have", "has", "had", "do", "does", "did", "can", "could", "will", "would", "should", "may", "might", "must", "you", "your", "yours", "he", "him", "his", "she", "her", "hers", "it", "its", "they", "them", "their", "theirs", "we", "us", "our", "ours", "i", "me", "my", "mine"];
+    
+    // Remove common words and split into individual words
+    const words = message.split(/\s+/).filter(word => !commonWords.includes(word));
+    
+    if (words.length === 0) {
+        return "Asit's background";
     }
+    
+    // Find the longest word as it might be more significant
+    let mainTopic = words.reduce((longest, current) => current.length > longest.length ? current : longest, "");
+    
+    // If the main topic is very short, use a combination of words
+    if (mainTopic.length < 4 && words.length > 1) {
+        mainTopic = words.slice(0, 2).join(" ");
+    }
+    
+    return mainTopic || "Asit's professional background";
 }
