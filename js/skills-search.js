@@ -11,7 +11,7 @@ function createSkillsSearchUI() {
     // Create the search container
     const searchContainer = document.createElement('div');
     searchContainer.id = 'skills-search-container';
-    searchContainer.className = 'max-w-3xl mx-auto mt-8 mb-4 px-4';
+    searchContainer.className = 'max-w-4xl mx-auto mt-8 mb-4 px-4';
     
     // Create the search UI
     searchContainer.innerHTML = `
@@ -42,6 +42,11 @@ function createSkillsSearchUI() {
                         <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">Testing</button>
                         <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">CI/CD</button>
                         <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">Prompt Engineering</button>
+                        <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">RAG</button>
+                        <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">LangChain</button>
+                        <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">LangGraph</button>
+                        <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">Vector Embeddings</button>
+                        <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">Agentic Framework</button>
                         <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">RFP</button>
                         <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">POC</button>
                         <button class="trending-skill px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition">Solution Architecture</button>
